@@ -11,6 +11,8 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.SeparateDatabaseAndState(
+            # This represents one state of db, if we want to create an othet state
+            # we need to create an other migrations.SeparateDatabaseAndState
             state_operations=[
                 migrations.RemoveField(
                     model_name="letting",

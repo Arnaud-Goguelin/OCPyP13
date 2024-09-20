@@ -16,36 +16,16 @@ class Migration(migrations.Migration):
                     model_name="letting",
                     name="address",
                 ),
-            ],
-            database_operations=[],
-        ),
-        migrations.SeparateDatabaseAndState(
-            state_operations=[
                 migrations.RemoveField(
                     model_name="profile",
                     name="user",
                 ),
-            ],
-            database_operations=[],
-        ),
-        migrations.SeparateDatabaseAndState(
-            state_operations=[
                 migrations.DeleteModel(
                     name="Address",
                 ),
-            ],
-            database_operations=[],
-        ),
-        migrations.SeparateDatabaseAndState(
-            state_operations=[
                 migrations.DeleteModel(
                     name="Letting",
                 ),
-            ],
-            database_operations=[],
-        ),
-        migrations.SeparateDatabaseAndState(
-            state_operations=[
                 migrations.DeleteModel(
                     name="Profile",
                 ),

@@ -67,11 +67,6 @@ class Migration(migrations.Migration):
                         "db_table": "oc_lettings_site_address",
                     },
                 ),
-            ],
-            database_operations=[],
-        ),
-        migrations.SeparateDatabaseAndState(
-            state_operations=[
                 migrations.CreateModel(
                     name="Letting",
                     fields=[

@@ -11,4 +11,13 @@ from django.shortcuts import render
 # pellentesque iaculis enim cursus in.
 # Praesent volutpat porttitor magna, non finibus neque cursus id.
 def index(request):
+    """
+    Renders the landing page (index view).
+
+    Args:
+        request (HttpRequest): The HTTP request object containing metadata about the request.
+
+    Returns:
+        HttpResponse: The HTTP response rendering the 'index.html' template.
+    """
     return render(request, "index.html")

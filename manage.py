@@ -3,6 +3,12 @@ import sys
 
 
 def main():
+    """
+    Initializes the Django environment and executes command-line instructions.
+
+    Sets the default settings module for Django and executes management commands.
+    Raises ImportError if Django is not available.
+    """
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "oc_lettings_site.settings")
     try:
         from django.core.management import execute_from_command_line

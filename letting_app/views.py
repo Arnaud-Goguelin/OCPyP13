@@ -30,14 +30,15 @@ def lettings_index(request):
 # Mauris condimentum auctor elementum. Donec quis nisi ligula.
 # Integer vehicula tincidunt enim, ac lacinia augue pulvinar sit amet.
 def letting(request, letting_id):
-    """_summary_
+    """
+    Renders the page displaying a specific letting.
 
     Args:
-        request (_type_): _description_
-        letting_id (_type_): _description_
+        request (HttpRequest): The HTTP request object.
+        letting_id (int): The ID of the letting to display.
 
     Returns:
-        _type_: _description_
+        HttpResponse: The rendered HTML page displaying the letting details.
     """
     letting = Letting.objects.get(id=letting_id)
     context = {

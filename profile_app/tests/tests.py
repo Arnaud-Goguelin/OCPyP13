@@ -44,5 +44,6 @@ class ProfileViewTests(TestCase):
         )
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, "profile_app/profile.html")
-        # make sure generated html template contain test favorite city of test profile: "test favorite city"
+        # make sure generated html template contain
+        # test favorite city of test profile: "test favorite city"
         self.assertContains(response, self.profile.favorite_city)

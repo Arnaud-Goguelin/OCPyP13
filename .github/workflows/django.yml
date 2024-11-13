@@ -29,6 +29,7 @@ jobs:
         pip install -r requirements.txt
     # run flake8 (linter)
     - name: Run Flake8
+    # exclude migrations files beacause it is generated automatically
       run: flake8 --exclude=*/migrations/* .
     # run django tests
     - name: Run Tests

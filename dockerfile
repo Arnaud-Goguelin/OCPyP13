@@ -1,4 +1,4 @@
-FROM python:3.12.3
+FROM python:3.12.3 as base
 
 WORKDIR /code
 
@@ -7,5 +7,10 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . /code/
 
-EXPOSE 8000
-CMD ["python", "manage.py", "runserver", "127.0.0.1:8000"]
+FROM base as dev
+
+CMD ["sleep", "infinity"]
+
+# FROM base as prod
+
+# CMD ["gunicorn", "app.wsgi:application", "--bind"]

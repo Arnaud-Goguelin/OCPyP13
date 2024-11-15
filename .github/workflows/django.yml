@@ -52,4 +52,4 @@ jobs:
         # TODO: prod wont work as it is not define yet in dockerfile
         target: dev
         push: true
-        tags: ${{ secrets.DOCKER_USERNAME }}/$REPO_NAME:latest
+        tags: ${{ secrets.DOCKER_USERNAME }}/${{ env.REPO_NAME }}:latest

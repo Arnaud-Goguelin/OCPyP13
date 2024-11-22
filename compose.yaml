@@ -2,9 +2,6 @@ services:
 
   oc_lettings_app:
     container_name: server
-    build:
-      context: .
-      target: dev
     image: oc_lettings_app:lastest
     restart: no
     ports:

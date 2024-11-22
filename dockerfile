@@ -27,14 +27,13 @@ RUN apt-get update && apt-get install -y \
 COPY requirements.txt ./
 # use --mount=type=cache to cache the dependencies and make the build faster
 RUN --mount=type=cache,target=/root/.cache/pip \
-    && pip install --upgrade pip \
-    && pip install -r requirements.txt && \
+    pip install --upgrade pip \
+    && pip install -r requirements.txt \
     # Remove build dependencies to gain space
-    apt-get remove -y build-essential && \
-    apt-get autoremove -y
+    && apt-get remove -y build-essential \
+    && apt-get autoremove -y
 
 # Create a non-root user (better security)
-# TODO: the user id and group id don't need to be stored in github secrets???
 ARG USER_ID=1000
 ARG GROUP_ID=1000
 RUN groupadd -g $GROUP_ID appgroup && \
@@ -48,7 +47,6 @@ RUN groupadd -g $GROUP_ID appgroup && \
 
 # Switch to the non-root user
 # thus /app and /data owner is root user and they won't be modified by appuser
-USER appuser
 
 # ----------------------------------------------------------------------
 # --- DEV STAGE ---
@@ -57,7 +55,7 @@ USER appuser
 FROM base as dev
 # Copy project files
 COPY . /app/
-
+# in dev user should be able to modify the app
 ENV ENVIRONMENT=development
 CMD ["sleep", "infinity"]
 
@@ -65,6 +63,7 @@ CMD ["sleep", "infinity"]
 # --- PROD STAGE ---
 # ----------------------------------------------------------------------
 FROM base as prod
+USER appuser
 # Set environment variables
 ENV ENVIRONMENT=production
 ENV DJANGO_ALLOWED_HOSTS=*
@@ -85,4 +84,5 @@ EXPOSE 8000
 # Run the Django app with Gunicorn
 # Entrypoint is the command that will be executed when the container starts
 # reminder : in this case CMD would the args passed to ENTRYPOINT (but everything is in gunicorn.conf.py)
-ENTRYPOINT ["gunicorn", "app.wsgi:application", "-c", "/app/gunicorn.conf.py"]# CMD are the args passed to the entrypoint
+ENTRYPOINT ["gunicorn", "oc_lettings_site.wsgi:application", "-c", "/app/gunicorn.conf.py"]
+# CMD are the args passed to the entrypoint

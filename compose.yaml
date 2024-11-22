@@ -1,14 +1,16 @@
 services:
 
-  oc_lettings_app:
-    container_name: server
-    image: oc_lettings_app:lastest
+  server:
+    container_name: oc_lettings_site
+    build:
+      context: .
+      target: dev
     restart: no
     ports:
       - 8000:8000
     volumes:
       - sqlite_data:/var/lib/sqlite/data
-    command: python manage.py runserver 0.0.0.0:8000
+    # command: python manage.py runserver 0.0.0.0:8000
 
 volumes:
   sqlite_data:

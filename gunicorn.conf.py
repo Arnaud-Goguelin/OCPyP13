@@ -19,7 +19,7 @@ threads = max(1, (4 // workers) + (1 if 4 % workers != 0 else 0))
 # threads = 1
 
 timeout = 120
-bind = f"0.0.0.0:{PORT}"
+bind = f"0.0.0.0: {PORT}"
 accesslog = "-"
 errorlog = "-"
 loglevel = "info"

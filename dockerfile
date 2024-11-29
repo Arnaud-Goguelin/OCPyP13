@@ -14,7 +14,7 @@ ENV PYTHONUNBUFFERED=1
 ENV PYTHONDONTWRITEBYTECODE=1
 
 # create a directory for the project and work in it
-RUN mkdir -p /app /data
+RUN mkdir -p /app
 WORKDIR /app
 
 # Install system dependencies and Python
@@ -40,13 +40,10 @@ RUN groupadd -g $GROUP_ID appgroup && \
     useradd -g $GROUP_ID -m appuser && \
     # owner can write, read and execute files in the app directory
     # others can read and execute only
-    chmod -R 755 /app && \
-    # owner can read, write and execute files in the data directory
-    # others can't do anything
-    chmod -R 700 /data
+    chmod -R 755 /app
 
-# Switch to the non-root user
-# thus /app and /data owner is root user and they won't be modified by appuser
+# Copy project files
+COPY . /app/
 
 # ----------------------------------------------------------------------
 # --- DEV STAGE ---
@@ -56,13 +53,19 @@ FROM base as dev
 # Copy project files
 COPY . /app/
 # in dev user should be able to modify the app
+# so we don't switch to the non-root user
 ENV ENVIRONMENT=development
+
+# Collect static files for Django app, for test with gunicorn in local
+RUN ./manage.py collectstatic --noinput --clear
+
 CMD ["sleep", "infinity"]
 
 # ----------------------------------------------------------------------
 # --- PROD STAGE ---
 # ----------------------------------------------------------------------
 FROM base as prod
+# Switch to the non-root user
 USER appuser
 # Set environment variables
 ENV ENVIRONMENT=production
@@ -70,11 +73,9 @@ ENV DJANGO_ALLOWED_HOSTS=*
 # be sure to set the debug mode to False
 ENV DJANGO_DEBUG=False
 
-# Copy project files
-COPY . /app/
-
 # Collect static files for Django app
 RUN ./manage.py collectstatic --noinput --clear
+
 
 # Configure Gunicorn
 COPY gunicorn.conf.py /app/gunicorn.conf.py
@@ -83,6 +84,5 @@ EXPOSE 8000
 
 # Run the Django app with Gunicorn
 # Entrypoint is the command that will be executed when the container starts
-# reminder : in this case CMD would the args passed to ENTRYPOINT (but everything is in gunicorn.conf.py)
+# reminder : in this case CMD would be the args passed to ENTRYPOINT (but everything is in gunicorn.conf.py)
 ENTRYPOINT ["gunicorn", "oc_lettings_site.wsgi:application", "-c", "/app/gunicorn.conf.py"]
-# CMD are the args passed to the entrypoint

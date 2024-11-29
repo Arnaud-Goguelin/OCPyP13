@@ -8,11 +8,12 @@ import multiprocessing
 # n workers X n tread shoudl be equal to 4
 
 
-workers = multiprocessing.cpu_count() * 2 + 1
-
+# workers = multiprocessing.cpu_count() * 2 + 1
+workers = 1
 # Calculate the number of threads such that the total number of workers x threads is at least 4
 # Ensure at least 1 thread is used
-threads = max(1, (4 // workers) + (1 if 4 % workers != 0 else 0))
+# threads = max(1, (4 // workers) + (1 if 4 % workers != 0 else 0))
+threads = 1
 
 timeout = 120
 bind = "0.0.0.0:8000"

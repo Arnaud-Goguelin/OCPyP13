@@ -4,7 +4,7 @@ services:
     container_name: oc_lettings_site
     build:
       context: .
-      target: dev
+      target: prod
     restart: no
     ports:
       - 8000:8000

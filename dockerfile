@@ -57,7 +57,7 @@ FROM base as dev
 ENV ENVIRONMENT=development
 
 # Collect static files for Django app, for test with gunicorn in local
-RUN python ./manage.py collectstatic --noinput --clear
+# RUN python ./manage.py collectstatic --noinput --clear
 
 CMD ["sleep", "infinity"]
 

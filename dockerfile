@@ -46,6 +46,8 @@ RUN groupadd -g $GROUP_ID appgroup && \
 
 # Copy project files
 COPY . /app/
+# Collect static files for Django app
+RUN python ./manage.py collectstatic --noinput --clear
 
 # ----------------------------------------------------------------------
 # --- DEV STAGE ---
@@ -73,8 +75,6 @@ ENV DJANGO_ALLOWED_HOSTS=*
 # be sure to set the debug mode to False
 ENV DJANGO_DEBUG=False
 
-# Collect static files for Django app
-RUN python ./manage.py collectstatic --noinput --clear
 
 
 # Configure Gunicorn

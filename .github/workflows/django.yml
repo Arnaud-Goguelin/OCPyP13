@@ -65,5 +65,6 @@ jobs:
     - name: Call webhook
       # Only run this step if the branch is master
       if: github.ref == 'refs/heads/master'
+      # RENDER_DEPLOY_HOOK_URL is define in git hub actions
       run: |
         curl -X POST ${{ secrets.RENDER_DEPLOY_HOOK_URL }}

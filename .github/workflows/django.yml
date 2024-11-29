@@ -49,7 +49,6 @@ jobs:
       with:
         context: .
         platforms: linux/amd64,linux/arm64
-        # TODO: prod wont work as it is not define yet in dockerfile
-        target: dev
+        target: prod
         push: true
         tags: ${{ secrets.DOCKER_USERNAME }}/${{ env.REPO_NAME }}:latest

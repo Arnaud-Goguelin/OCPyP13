@@ -19,7 +19,9 @@ WORKDIR /app
 
 # Install system dependencies and Python
 RUN apt-get update && apt-get install -y \
-    build-essential libpq-dev \
+    build-essential \
+    # libpq-dev is needed to install psycopg2 to use postgres, yet we use sqlite in this project
+    # build-essential libpq-dev \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
@@ -50,14 +52,12 @@ COPY . /app/
 # ----------------------------------------------------------------------
 
 FROM base as dev
-# Copy project files
-COPY . /app/
 # in dev user should be able to modify the app
 # so we don't switch to the non-root user
 ENV ENVIRONMENT=development
 
 # Collect static files for Django app, for test with gunicorn in local
-RUN ./manage.py collectstatic --noinput --clear
+RUN python ./manage.py collectstatic --noinput --clear
 
 CMD ["sleep", "infinity"]
 
@@ -74,7 +74,7 @@ ENV DJANGO_ALLOWED_HOSTS=*
 ENV DJANGO_DEBUG=False
 
 # Collect static files for Django app
-RUN ./manage.py collectstatic --noinput --clear
+RUN python ./manage.py collectstatic --noinput --clear
 
 
 # Configure Gunicorn

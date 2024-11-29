@@ -1,4 +1,4 @@
-import multiprocessing
+# import multiprocessing
 
 # number of worker and threads:
 # according to gunicorn docs (https://docs.gunicorn.org/en/stable/design.html#asyncio-workers)

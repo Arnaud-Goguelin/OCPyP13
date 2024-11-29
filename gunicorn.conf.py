@@ -1,4 +1,5 @@
 import multiprocessing
+from oc_lettings_site.settings import PORT
 
 # number of worker and threads:
 # according to gunicorn docs (https://docs.gunicorn.org/en/stable/design.html#asyncio-workers)
@@ -18,7 +19,7 @@ threads = max(1, (4 // workers) + (1 if 4 % workers != 0 else 0))
 # threads = 1
 
 timeout = 120
-bind = "0.0.0.0:8000"
+bind = f"0.0.0.0:{PORT}"
 accesslog = "-"
 errorlog = "-"
 loglevel = "info"

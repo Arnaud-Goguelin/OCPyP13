@@ -10,7 +10,6 @@ services:
       - 8000:8000
     volumes:
       - sqlite_data:/var/lib/sqlite/data
-    # command: python manage.py runserver 0.0.0.0:8000
 
 volumes:
   sqlite_data:

@@ -80,7 +80,7 @@ ENV DJANGO_DEBUG=False
 # Configure Gunicorn
 COPY gunicorn.conf.py /app/gunicorn.conf.py
 
-EXPOSE 8000
+EXPOSE $PORT
 
 # Run the Django app with Gunicorn
 # Entrypoint is the command that will be executed when the container starts

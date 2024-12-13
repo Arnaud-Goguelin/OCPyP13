@@ -4,20 +4,17 @@ Technical Documentation
 
 .. toctree::
    :maxdepth: 2
-   :caption: Table of Contents
+   :caption: Contents:
 
    introduction
-   project_context
-   prerequisites_and_installation
-   technical_architecture
-   configuration
-   usage
+   prerequisites
+   installation
+   architecture
    api
-   testing_and_code_quality
-   security
-   faq
-   appendix
-   glossary
+
+TEST TEST TEST
+============
+
 
 Introduction
 ============

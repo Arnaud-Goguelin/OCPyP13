@@ -44,7 +44,7 @@ The **oc_lettings_app** application was developed as part of the **Site Web 2.0*
 Project Online
 ===============
 
-You can access the project online at the following URL: https://ocpyp13.onrender.com/
+You can access the project online at the following URL: https://ocpyp13.onrender.com/ .
 (may take few minutes to load, as server workers might be sleeping)
 
 Configuration
@@ -67,24 +67,30 @@ Before installing the application, ensure you have the following prerequisites:
 
 **Installation Instructions**
 1. **Clone the repository**:
+.. code-block:: bash
 git clone https://github.com/Arnaud-Goguelin/OCPyP13.git
 
 2. **Create a virtual environment**:
 # On Windows: 
+.. code-block:: bash
 python -m venv venv
 env\Scripts\activate
 
 # On macOS/Linux:
+.. code-block:: bash
 python3 -m venv venv
 source venv/bin/activate
 
 3. **Install dependencies**:
+.. code-block:: bash
 pip install -r requirements.txt
 
 4. **Apply database migrations**:
+.. code-block:: bash
 python manage.py migrate
 
 5. **Run the development server**:
+.. code-block:: bash
 python manage.py runserver
 
 6. **Access the app**:
@@ -99,16 +105,23 @@ Technical Architecture
 - **Docker**: Used for containerizing the services (db, and server) and set up the development or the production environment.
 
 
-API (Endpoints and Examples)
+API (Endpoints details)
 ============================
 
 **List of available endpoints:**
 
-| **Method** | **URL**                      | **Description**                     |
-|------------|------------------------------|-------------------------------------|
-| **GET**    | /                            | display landing page: index.html    |
-| **GET**    | /profiles/                   | display profiles page               |
-| **GET**    | /profiles/<str:username>/}/  | display selected user               |
-| **GET**    | /lettings/                   | display lettings page               |
-| **GET**    | /lettings//<int:letting_id>/ | display selected letting            |
-| **GET**    | /asentry-debug/              | to test Sentry                      |
++----------+-------------------------------------+-----------------------------------------+
+| **Method** | **URL**                           | **Description**                         |
++----------+-------------------------------------+-----------------------------------------+
+| **GET**    | /                                 | display landing page: index.html        |
++----------+-------------------------------------+-----------------------------------------+
+| **GET**    | /profiles/                        | display profiles page                   |
++----------+-------------------------------------+-----------------------------------------+
+| **GET**    | /profiles/{str:username}/         | display selected user                   |
++----------+-------------------------------------+-----------------------------------------+
+| **GET**    | /lettings/                        | display lettings page                   |
++----------+-------------------------------------+-----------------------------------------+
+| **GET**    | /lettings/{int:letting_id}/       | display selected letting                |
++----------+-------------------------------------+-----------------------------------------+
+| **GET**    | /asentry-debug/                   | to test Sentry                          |
++----------+-------------------------------------+-----------------------------------------+

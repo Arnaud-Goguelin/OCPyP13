@@ -79,7 +79,7 @@ ENV DJANGO_DEBUG=False
 
 
 # Configure Gunicorn
-COPY gunicorn.conf.py /app/gunicorn.conf.py
+COPY /docker/gunicorn.conf.py /app/gunicorn.conf.py
 
 EXPOSE 8000
 

@@ -136,9 +136,12 @@ STATICFILES_DIRS = [
 
 # TODO: put dsn in secret env
 # Set Sentry for error monitoring, tracing and profiling
+SENTRY_PUBLIC_KEY = os.environ.get("SENTRY_PUBLIC_KEY")
+SENTRY_HOST = os.environ.get("SENTRY_HOST")
+SENTRY_PROJECT_ID = os.environ.get("SENTRY_PROJECT_ID")
 sentry_sdk.init(
     # --- error monitoring ---
-    dsn="https://f6842638c36982e5c8cb5257dd6918a3@o4508420703256576.ingest.de.sentry.io/4508420709285968",
+    dsn=f"https://{SENTRY_PUBLIC_KEY}@{SENTRY_HOST}/{SENTRY_PROJECT_ID}",
     # --- tracing ---
     # Set traces_sample_rate to 1.0 to capture 100%
     # range value from 0 to 1

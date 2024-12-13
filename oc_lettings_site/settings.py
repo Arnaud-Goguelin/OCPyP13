@@ -1,5 +1,5 @@
 import os
-
+from dotenv import load_dotenv
 from pathlib import Path
 import sentry_sdk
 
@@ -134,8 +134,8 @@ STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
 
-# TODO: put dsn in secret env
 # Set Sentry for error monitoring, tracing and profiling
+load_dotenv()
 SENTRY_PUBLIC_KEY = os.environ.get("SENTRY_PUBLIC_KEY")
 SENTRY_HOST = os.environ.get("SENTRY_HOST")
 SENTRY_PROJECT_ID = os.environ.get("SENTRY_PROJECT_ID")

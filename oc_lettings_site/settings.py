@@ -141,7 +141,11 @@ SENTRY_HOST = os.environ.get("SENTRY_HOST")
 SENTRY_PROJECT_ID = os.environ.get("SENTRY_PROJECT_ID")
 sentry_sdk.init(
     # --- error monitoring ---
-    dsn=f"https://{SENTRY_PUBLIC_KEY}@{SENTRY_HOST}/{SENTRY_PROJECT_ID}",
+    # use str.format() because flake8 would interpret f-string as a dict
+    # and raise an error E231 as expecting a space after ':'
+    dsn="https://{public_key}@{host}/{project_id}".format(
+        public_key=SENTRY_PUBLIC_KEY, host=SENTRY_HOST, project_id=SENTRY_PROJECT_ID
+    ),
     # --- tracing ---
     # Set traces_sample_rate to 1.0 to capture 100%
     # range value from 0 to 1

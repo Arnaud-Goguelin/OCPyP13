@@ -17,8 +17,9 @@ SECRET_KEY = os.environ.get(
 )
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = os.environ.get("DEBUG", default="False")
 
+# ALLOWED_HOSTS are set by default for dev
 ALLOWED_HOSTS = ["0.0.0.0", "127.0.0.1"]
 RENDER_EXTERNAL_HOSTNAME = os.environ.get("RENDER_EXTERNAL_HOSTNAME")
 if RENDER_EXTERNAL_HOSTNAME:
@@ -139,13 +140,15 @@ load_dotenv()
 SENTRY_PUBLIC_KEY = os.environ.get("SENTRY_PUBLIC_KEY")
 SENTRY_HOST = os.environ.get("SENTRY_HOST")
 SENTRY_PROJECT_ID = os.environ.get("SENTRY_PROJECT_ID")
+SENTR_DSN = "https://{public_key}@{host}/{project_id}".format(
+    public_key=SENTRY_PUBLIC_KEY, host=SENTRY_HOST, project_id=SENTRY_PROJECT_ID
+)
+
 sentry_sdk.init(
     # --- error monitoring ---
     # use str.format() because flake8 would interpret f-string as a dict
     # and raise an error E231 as expecting a space after ':'
-    dsn="https://{public_key}@{host}/{project_id}".format(
-        public_key=SENTRY_PUBLIC_KEY, host=SENTRY_HOST, project_id=SENTRY_PROJECT_ID
-    ),
+    dsn=SENTR_DSN,
     # --- tracing ---
     # Set traces_sample_rate to 1.0 to capture 100%
     # range value from 0 to 1

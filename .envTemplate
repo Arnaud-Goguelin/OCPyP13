@@ -1,0 +1,10 @@
+#Django app secrets
+SECRET_KEY=the secret to init the app and allow all the cryptographic signing
+DEBUG=set the app behavior (False for prod, True for developpement)
+RENDER_EXTERNAL_HOSTNAME=the render hostname of the depleyed app
+PORT=the port whre the app is listening
+
+#Secrets for Sentry:
+SENTRY_PUBLIC_KEY= the public of the Sentry account where this project is survey
+SENTRY_HOST= the host of the Sentry account where this project is survey
+SENTRY_PROJECT_ID= the id of this project

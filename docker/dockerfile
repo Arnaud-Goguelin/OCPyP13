@@ -27,7 +27,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Python dependencies
-COPY ../docs/requirements.txt ./
+COPY docs/requirements.txt ./
 # use --mount=type=cache to cache the dependencies and make the build faster
 RUN --mount=type=cache,target=/root/.cache/pip \
     pip install --upgrade pip \

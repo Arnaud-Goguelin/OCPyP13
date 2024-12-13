@@ -1,6 +1,7 @@
 import os
 
 from pathlib import Path
+import sentry_sdk
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -132,3 +133,22 @@ STATIC_URL = "/static/"
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
+
+# TODO: put dsn in secret env
+# Set Sentry for error monitoring, tracing and profiling
+sentry_sdk.init(
+    # --- error monitoring ---
+    dsn="https://f6842638c36982e5c8cb5257dd6918a3@o4508420703256576.ingest.de.sentry.io/4508420709285968",
+    # --- tracing ---
+    # Set traces_sample_rate to 1.0 to capture 100%
+    # range value from 0 to 1
+    # of transactions for tracing.
+    traces_sample_rate=1.0,
+    # --- profiling ---
+    _experiments={
+        # Set continuous_profiling_auto_start to True
+        # to automatically start the profiler on when
+        # possible.
+        "continuous_profiling_auto_start": True,
+    },
+)

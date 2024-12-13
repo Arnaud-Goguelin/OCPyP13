@@ -2,6 +2,7 @@
 # --- BASE STAGE ---
 # ----------------------------------------------------------------------
 
+# TODO check .dockerignore is it is well configured
 
 # use --platform linux/amd64 to ensure compatibility with the architecture x86-64.
 # use -slim to reduce the size of the image

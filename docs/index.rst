@@ -67,31 +67,25 @@ Before installing the application, ensure you have the following prerequisites:
 
 **Installation Instructions**
 1. **Clone the repository**:
-.. code-block:: bash
-git clone https://github.com/Arnaud-Goguelin/OCPyP13.git
+| git clone https://github.com/Arnaud-Goguelin/OCPyP13.git
 
 2. **Create a virtual environment**:
-# On Windows: 
-.. code-block:: bash
-python -m venv venv
-env\Scripts\activate
+| # On Windows: 
+| python -m venv venv
+| env\Scripts\activate
 
-# On macOS/Linux:
-.. code-block:: bash
-python3 -m venv venv
-source venv/bin/activate
+| # On macOS/Linux:
+| python3 -m venv venv
+| source venv/bin/activate
 
 3. **Install dependencies**:
-.. code-block:: bash
-pip install -r requirements.txt
+| pip install -r requirements.txt
 
 4. **Apply database migrations**:
-.. code-block:: bash
-python manage.py migrate
+| python manage.py migrate
 
 5. **Run the development server**:
-.. code-block:: bash
-python manage.py runserver
+| python manage.py runserver
 
 6. **Access the app**:
 Open a browser and go to: **http://127.0.0.1:8000/**
@@ -110,18 +104,18 @@ API (Endpoints details)
 
 **List of available endpoints:**
 
-+----------+-------------------------------------+-----------------------------------------+
++------------+-------------------------------------+---------------------------------------+
 | **Method** | **URL**                           | **Description**                         |
-+----------+-------------------------------------+-----------------------------------------+
++------------+-------------------------------------+---------------------------------------+
 | **GET**    | /                                 | display landing page: index.html        |
-+----------+-------------------------------------+-----------------------------------------+
++------------+-------------------------------------+---------------------------------------+
 | **GET**    | /profiles/                        | display profiles page                   |
-+----------+-------------------------------------+-----------------------------------------+
++------------+-------------------------------------+---------------------------------------+
 | **GET**    | /profiles/{str:username}/         | display selected user                   |
-+----------+-------------------------------------+-----------------------------------------+
++------------+-------------------------------------+---------------------------------------+
 | **GET**    | /lettings/                        | display lettings page                   |
-+----------+-------------------------------------+-----------------------------------------+
++------------+-------------------------------------+---------------------------------------+
 | **GET**    | /lettings/{int:letting_id}/       | display selected letting                |
-+----------+-------------------------------------+-----------------------------------------+
++------------+-------------------------------------+---------------------------------------+
 | **GET**    | /asentry-debug/                   | to test Sentry                          |
-+----------+-------------------------------------+-----------------------------------------+
++------------+-------------------------------------+---------------------------------------+

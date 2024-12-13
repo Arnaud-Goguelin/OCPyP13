@@ -12,10 +12,6 @@ Technical Documentation
    architecture
    api
 
-TEST TEST TEST
-============
-
-
 Introduction
 ============
 

@@ -45,7 +45,8 @@ Project Online
 ===============
 
 You can access the project online at the following URL: https://ocpyp13.onrender.com/ .
-(may take few minutes to load, as server workers might be sleeping)
+
+| (may take few minutes to load, as server workers might be sleeping)
 
 Configuration
 =============
@@ -67,9 +68,11 @@ Before installing the application, ensure you have the following prerequisites:
 
 **Installation Instructions**
 1. **Clone the repository**:
+
 | git clone https://github.com/Arnaud-Goguelin/OCPyP13.git
 
 2. **Create a virtual environment**:
+
 | # On Windows: 
 | python -m venv venv
 | env\Scripts\activate
@@ -79,12 +82,15 @@ Before installing the application, ensure you have the following prerequisites:
 | source venv/bin/activate
 
 3. **Install dependencies**:
+
 | pip install -r requirements.txt
 
 4. **Apply database migrations**:
+
 | python manage.py migrate
 
 5. **Run the development server**:
+
 | python manage.py runserver
 
 6. **Access the app**:
@@ -105,17 +111,17 @@ API (Endpoints details)
 **List of available endpoints:**
 
 +------------+-------------------------------------+---------------------------------------+
-| **Method** | **URL**                           | **Description**                         |
+| **Method** | **URL**                             | **Description**                       |
 +------------+-------------------------------------+---------------------------------------+
-| **GET**    | /                                 | display landing page: index.html        |
+| **GET**    | /                                   | display landing page: index.html      |
 +------------+-------------------------------------+---------------------------------------+
-| **GET**    | /profiles/                        | display profiles page                   |
+| **GET**    | /profiles/                          | display profiles page                 |
 +------------+-------------------------------------+---------------------------------------+
-| **GET**    | /profiles/{str:username}/         | display selected user                   |
+| **GET**    | /profiles/{str:username}/           | display selected user                 |
 +------------+-------------------------------------+---------------------------------------+
-| **GET**    | /lettings/                        | display lettings page                   |
+| **GET**    | /lettings/                          | display lettings page                 |
 +------------+-------------------------------------+---------------------------------------+
-| **GET**    | /lettings/{int:letting_id}/       | display selected letting                |
+| **GET**    | /lettings/{int:letting_id}/         | display selected letting              |
 +------------+-------------------------------------+---------------------------------------+
-| **GET**    | /asentry-debug/                   | to test Sentry                          |
+| **GET**    | /asentry-debug/                     | to test Sentry                        |
 +------------+-------------------------------------+---------------------------------------+

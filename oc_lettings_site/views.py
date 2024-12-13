@@ -21,3 +21,8 @@ def index(request):
         HttpResponse: The HTTP response rendering the 'index.html' template.
     """
     return render(request, "index.html")
+
+
+# route to trigger an error for testing
+def trigger_error():
+    return 1 / 0

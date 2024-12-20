@@ -69,7 +69,7 @@ CMD ["sleep", "infinity"]
 # ----------------------------------------------------------------------
 FROM base as prod
 # Switch to the non-root user
-USER appuser
+# USER appuser
 # Set environment variables
 ENV ENVIRONMENT=production
 ENV DJANGO_ALLOWED_HOSTS=*

@@ -43,7 +43,7 @@ RUN groupadd -g $GROUP_ID appgroup && \
     useradd -g $GROUP_ID -m appuser && \
     # owner can write, read and execute files in the app directory
     # others can read and execute only
-    chmod -R 755 /app
+    chmod -R 766 /app
 
 # Copy project files
 COPY . /app/

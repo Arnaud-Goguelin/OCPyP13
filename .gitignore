@@ -6,3 +6,4 @@ TODO
 .env
 docs/_build
 docs/html
+.coverage

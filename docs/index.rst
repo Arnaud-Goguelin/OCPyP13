@@ -56,11 +56,12 @@ Prerequisites, Installation and Usage
 Before installing the application, ensure you have the following prerequisites:
 
 **System Requirements**
-- Python 3.12 or higher
-- SQLite3 (comes pre-installed with Python)
-- Docker (https://www.docker.com/)
+| - Python 3.12 or higher
+| - SQLite3 (comes pre-installed with Python)
+| - **Or**: Docker (https://www.docker.com/)
 
-**Installation Instructions**
+**Installation Instructions on a local environment**
+|
 1. **Clone the repository**:
 
 | git clone https://github.com/Arnaud-Goguelin/OCPyP13.git
@@ -79,16 +80,29 @@ Before installing the application, ensure you have the following prerequisites:
 
 | pip install -r requirements.txt
 
-4. **Apply database migrations**:
-
-| python manage.py migrate
-
 5. **Run the development server**:
 
 | python manage.py runserver
 
 6. **Access the app**:
-Open a browser and go to: **http://127.0.0.1:8000/**
+| Open a browser and go to: **http://127.0.0.1:8000/**
+
+**Installation Instructions in a docker container**
+|
+1. **Clone the repository**:
+
+| git clone https://github.com/Arnaud-Goguelin/OCPyP13.git
+
+2. **Launch docker container:**
+
+| Be sur to be at the root of the project.
+| Lauch the following command:
+| docker-compose up --build
+
+3. **Access the app**:
+| Open a browser and go to: **http://127.0.0.1:8000/**
+
+
 
 Technical Architecture
 ======================

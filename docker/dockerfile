@@ -59,9 +59,6 @@ FROM base as dev
 # so we don't switch to the non-root user
 ENV ENVIRONMENT=development
 
-# Collect static files for Django app, for test with gunicorn in local
-# RUN python ./manage.py collectstatic --noinput --clear
-
 CMD ["sleep", "infinity"]
 
 # ----------------------------------------------------------------------

@@ -59,6 +59,8 @@ FROM base as dev
 # so we don't switch to the non-root user
 ENV ENVIRONMENT=development
 
+EXPOSE 8000
+
 CMD ["sleep", "infinity"]
 
 # ----------------------------------------------------------------------

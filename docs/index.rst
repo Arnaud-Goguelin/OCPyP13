@@ -21,12 +21,13 @@ This documentation covers all the steps required to understand, install, and run
 Project Context
 ===============
 
-The **oc_lettings_app** application was developed as part of the **Site Web 2.0** project. The goal of this project is to provide a modern, scalable, and secure solution.
+The **oc_lettings_app** goal is to provide a modern, scalable, and maintenable solution.
 
 **Main Objectives:**
 - Provide users with a smooth web interface.
-- Offer user management, statistics, and reporting functionalities.
 - Ensure compatibility with production and testing environments.
+- Implements a CI/CD pipeline to automate the deployment process.
+- Ensure a modular and scalable architecture.
 
 **Technologies Used:**
 - **Framework**: Django 4.x
